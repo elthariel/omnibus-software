@@ -21,7 +21,7 @@ license "BSD-2-Clause"
 license_file "LICENCE"
 
 dependency "libedit"
-dependency "ncurses"
+dependency "ncurses" unless windows?
 dependency "config_guess"
 
 version "8.38" do
@@ -41,8 +41,7 @@ build do
 
   update_config_guess
 
-  command "./configure" \
-          " --prefix=#{install_dir}/embedded" \
+  configure " --prefix=#{install_dir}/embedded" \
           " --disable-cpp" \
           " --enable-utf" \
           " --enable-unicode-properties" \
